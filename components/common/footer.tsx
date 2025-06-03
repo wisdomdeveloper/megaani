@@ -59,8 +59,8 @@ export function Footer() {
             <h3 className="text-lg font-semibold">Contact</h3>
             <ul className="space-y-2 text-sm">
               <li className="text-muted-foreground">Email: support@megaani.com</li>
-              <li className="text-muted-foreground">Phone: +1 (555) 123-4567</li>
-              <li className="text-muted-foreground">Address: 123 Education St, Learning City</li>
+              <li className="text-muted-foreground">Phone: 08124579913</li>
+              <li className="text-muted-foreground">Address: Silicon Valley</li>
             </ul>
           </div>
         </div>
