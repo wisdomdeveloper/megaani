@@ -1,114 +1,53 @@
-"use client"
+import { LayoutDashboard, ListChecks, Users, BookOpen } from "lucide-react"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { BookOpen, GraduationCap, LayoutDashboard, Library, LifeBuoy, Settings, Wallet } from "lucide-react"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
+import type { SidebarNavItem } from "@/types"
 
 interface DashboardSidebarProps {
-  userType: "learner" | "instructor"
+  isInstructor: boolean
 }
 
-export function DashboardSidebar({ userType }: DashboardSidebarProps) {
-  const pathname = usePathname()
-
-  const learnerLinks = [
+export const DashboardSidebar = ({ isInstructor }: DashboardSidebarProps) => {
+  const guestLinks: SidebarNavItem[] = [
     {
-      title: "Dashboard",
-      href: "/dashboard",
+      href: "/",
+      label: "Dashboard",
       icon: LayoutDashboard,
     },
+  ]
+
+  const instructorLinks: SidebarNavItem[] = [
     {
-      title: "My Courses",
-      href: "/dashboard/courses",
+      href: "/instructor/courses",
+      label: "Courses",
+      icon: ListChecks,
+    },
+    {
+      href: "/instructor/analytics",
+      label: "Analytics",
+      icon: Users,
+    },
+    {
+      href: "/instructor/books",
+      label: "My Books",
       icon: BookOpen,
     },
+  ]
+
+  const studentLinks: SidebarNavItem[] = [
     {
-      title: "Settings",
-      href: "/dashboard/settings",
-      icon: Settings,
-    },
-    {
-      title: "Help",
-      href: "/help",
-      icon: LifeBuoy,
+      href: "/search",
+      label: "Browse",
+      icon: ListChecks,
     },
   ]
 
-  const instructorLinks = [
-    {
-      title: "Dashboard",
-      href: "/instructor/dashboard",
-      icon: LayoutDashboard,
-    },
-    {
-      title: "My Courses",
-      href: "/instructor/courses",
-      icon: Library,
-    },
-    {
-      title: "Wallet",
-      href: "/instructor/wallet",
-      icon: Wallet,
-    },
-    {
-      title: "Settings",
-      href: "/instructor/settings",
-      icon: Settings,
-    },
-    {
-      title: "Help",
-      href: "/help",
-      icon: LifeBuoy,
-    },
-  ]
-
-  const links = userType === "instructor" ? instructorLinks : learnerLinks
+  const links = isInstructor ? instructorLinks : studentLinks
 
   return (
-    <Sidebar>
-      <SidebarHeader>
-        <Link href="/" className="flex items-center space-x-2 px-4 py-2">
-          <BookOpen className="h-6 w-6" />
-          <span className="font-bold">Megaani</span>
-        </Link>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarMenu>
-          {links.map((link) => (
-            <SidebarMenuItem key={link.href}>
-              <SidebarMenuButton asChild isActive={pathname === link.href} tooltip={link.title}>
-                <Link href={link.href}>
-                  <link.icon className="h-5 w-5" />
-                  <span>{link.title}</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarContent>
-      <SidebarFooter>
-        {userType === "learner" && (
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton asChild tooltip="Become an Instructor">
-                <Link href="/become-instructor">
-                  <GraduationCap className="h-5 w-5" />
-                  <span>Become an Instructor</span>
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        )}
-      </SidebarFooter>
-    </Sidebar>
+    <>
+      {links.map((link) => (
+        <div key={link.href}>{link.label}</div>
+      ))}
+    </>
   )
 }

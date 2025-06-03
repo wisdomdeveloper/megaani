@@ -41,6 +41,11 @@ export function MainNav() {
       label: "Browse Courses",
       active: pathname === "/browse-courses",
     },
+    {
+      href: "/browse-books",
+      label: "Browse Books",
+      active: pathname === "/browse-books",
+    },
   ]
 
   const categories = [
@@ -112,9 +117,16 @@ export function MainNav() {
               <span className="font-bold">Megaani</span>
             </Link>
             <div className="mt-8 flex flex-col space-y-4">
-              <Link href="/browse-courses" className="text-lg font-medium" onClick={() => setIsOpen(false)}>
-                Browse Courses
-              </Link>
+              {routes.map((route) => (
+                <Link
+                  key={route.href}
+                  href={route.href}
+                  className="text-lg font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {route.label}
+                </Link>
+              ))}
               <div className="space-y-2">
                 <h4 className="text-sm font-medium text-muted-foreground">Categories</h4>
                 {categories.map((category) => (
@@ -189,10 +201,13 @@ export function MainNav() {
                       <DropdownMenuItem asChild>
                         <Link href="/instructor/wallet">Wallet</Link>
                       </DropdownMenuItem>
+                      <DropdownMenuItem asChild>
+                        <Link href="/instructor/books">My Books</Link>
+                      </DropdownMenuItem>
                     </>
                   ) : (
                     <DropdownMenuItem asChild>
-                      <Link href="/become-instructor">Become an Instructor</Link>
+                      <Link href="/register">Become an Instructor</Link>
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
