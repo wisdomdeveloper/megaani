@@ -57,7 +57,7 @@ export function InstructorCTA() {
                 size="lg"
                 className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               >
-                <Link href="/become-instructor">
+                <Link href="/register">
                   <Sparkles className="mr-2 h-5 w-5" />
                   Start Teaching Today
                 </Link>
