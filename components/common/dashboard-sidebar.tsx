@@ -1,28 +1,28 @@
-import { LayoutDashboard, ListChecks, Users, BookOpen } from "lucide-react"
+import { LayoutDashboard, ListChecks, Users, BookOpen, Settings, HelpCircle } from "lucide-react"
+import type { SidebarNavItem } from "@/types/sidebar-nav"
 
-import type { SidebarNavItem } from "@/types"
+type UserType = "guest" | "instructor" | "learner"
 
 interface DashboardSidebarProps {
-  isInstructor: boolean
+  userType: UserType
 }
 
-export const DashboardSidebar = ({ isInstructor }: DashboardSidebarProps) => {
-  const guestLinks: SidebarNavItem[] = [
+const navLinks: Record<UserType, SidebarNavItem[]> = {
+  guest: [
     {
       href: "/",
       label: "Dashboard",
       icon: LayoutDashboard,
     },
-  ]
-
-  const instructorLinks: SidebarNavItem[] = [
+  ],
+  instructor: [
     {
       href: "/instructor/courses",
       label: "Courses",
       icon: ListChecks,
     },
     {
-      href: "/instructor/analytics",
+      href: "/analytics",
       label: "Analytics",
       icon: Users,
     },
@@ -31,23 +31,59 @@ export const DashboardSidebar = ({ isInstructor }: DashboardSidebarProps) => {
       label: "My Books",
       icon: BookOpen,
     },
-  ]
-
-  const studentLinks: SidebarNavItem[] = [
-    {
-      href: "/search",
-      label: "Browse",
+      {
+      href: "/settings",
+      label: "Settings",
+      icon: Settings,
+    },
+     {
+      href: "/help",
+      label: "Help",
+      icon: HelpCircle,
+    },
+  ],
+  learner: [
+  
+     {
+      href: "/learner/courses",
+      label: "My Courses",
       icon: ListChecks,
     },
-  ]
 
-  const links = isInstructor ? instructorLinks : studentLinks
+     {
+      href: "/learner/books",
+      label: "My Books",
+      icon: BookOpen,
+    },
+
+     {
+      href: "/settings",
+      label: "Settings",
+      icon: Settings,
+    },
+     {
+      href: "/help",
+      label: "Help",
+      icon: HelpCircle,
+    },
+  ],
+}
+
+export const DashboardSidebar = ({ userType }: DashboardSidebarProps) => {
+  const links = navLinks[userType] || navLinks.guest
 
   return (
-    <>
-      {links.map((link) => (
-        <div key={link.href}>{link.label}</div>
-      ))}
-    </>
-  )
+ <aside className="w-64 p-4">
+  {links.map((link) => (
+    <a
+      key={link.href}
+      href={link.href}
+      className="flex items-center gap-2 mb-4 p-2 rounded transition-colors cursor-pointer rounded-xl hover:bg-gray-800"
+    >
+      <link.icon className="w-5 h-5" />
+      <span>{link.label}</span>
+    </a>
+  ))}
+</aside>
+  );
 }

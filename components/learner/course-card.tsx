@@ -40,7 +40,7 @@ export function CourseCard({ course }: CourseCardProps) {
   return (
     <div className="group">
       <Link href={`/course/${course.id}`}>
-        <Card className="overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 border-0 card-shadow-lg bg-white dark:bg-gray-900 dark:border dark:border-gray-800 dark:hover:shadow-violet-500/25">
+        <Card className="overflow-hidden flex flex-col justify-between h-full transition-all duration-300 hover:shadow-xl hover:scale-105 border-0 card-shadow-lg bg-white dark:bg-gray-900 dark:border dark:border-gray-800 dark:hover:shadow-violet-500/25">
           <div className="aspect-video w-full overflow-hidden relative">
             <img
               src={course.thumbnail || "/placeholder.svg?height=200&width=300"}

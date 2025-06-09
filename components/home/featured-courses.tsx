@@ -7,7 +7,7 @@ export function FeaturedCourses() {
   const courses = getFeaturedCourses()
 
   return (
-    <section className="w-full py-16 md:py-24 bg-gradient-to-br from-violet-50/50 via-purple-50/50 to-indigo-50/50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
+    <section className="w-[100%] flex items-center justify-center py-16 md:py-24 bg-gradient-to-br from-violet-50/50 via-purple-50/50 to-indigo-50/50 dark:from-gray-900 dark:via-purple-900/10 dark:to-indigo-900/10">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-6 text-center mb-12">
           <div className="space-y-4">

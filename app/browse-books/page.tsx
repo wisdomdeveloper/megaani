@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { BookGrid } from "@/components/learner/book-grid"
 import { BookFilters } from "@/components/learner/book-filters"
 import { SearchBar } from "@/components/common/search-bar"
+import { MainNav }  from "@/components/common/main-nav.tsx" 
 
 export const metadata: Metadata = {
   title: "Browse Books | Megaani",
@@ -23,17 +24,20 @@ export default function BrowseBooksPage({ searchParams }: BrowseBooksPageProps) 
   const { category, format, language, minPrice, maxPrice, q } = searchParams
 
   return (
-    <div className="container py-8">
-      <div className="mb-8">
+   <div>
+      <MainNav/>
+
+    <div className="container !p-8 " >
+      <div className="!mb-8 !p-3">
         <h1 className="mb-4 text-3xl font-bold">Browse Books</h1>
         <SearchBar placeholder="Search for books..." />
       </div>
 
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4">
-        <div className="lg:col-span-1">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-4 ">
+        <div className="lg:col-span-1 !p-3">
           <BookFilters />
         </div>
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 !p-2">
           <BookGrid
             category={category}
             format={format}
@@ -45,5 +49,6 @@ export default function BrowseBooksPage({ searchParams }: BrowseBooksPageProps) 
         </div>
       </div>
     </div>
+   </div>
   )
 }

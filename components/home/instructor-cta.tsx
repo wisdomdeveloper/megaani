@@ -4,7 +4,7 @@ import { GraduationCap, TrendingUp, Users, Sparkles } from "lucide-react"
 
 export function InstructorCTA() {
   return (
-    <section className="w-full py-16 md:py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
+    <section className="w-[100%] flex items-center justify-center py-16 md:py-24 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
       <div className="container px-4 md:px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           <div className="flex flex-col justify-center space-y-8 animate-fade-in">

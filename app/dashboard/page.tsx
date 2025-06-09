@@ -5,7 +5,7 @@ import { LearnerStats } from "@/components/learner/learner-stats"
 import { DashboardShell } from "@/components/common/dashboard-shell"
 import { PurchasedCourses } from "@/components/learner/purchased-courses"
 
-export default function LearnerDashboard() {
+export default function LearnerDashboard() { 
   return (
     <div className="flex min-h-screen flex-col">
       <MainNav />
@@ -16,7 +16,7 @@ export default function LearnerDashboard() {
             <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
           </div>
           <div className="space-y-4">
-            <LearnerStats />
+            <LearnerStats /> 
             <PurchasedCourses />
           </div>
         </div>

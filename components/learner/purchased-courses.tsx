@@ -77,8 +77,8 @@ export function PurchasedCourses() {
                 </div>
                 <p className="text-xs text-muted-foreground">Next: {course.nextLesson}</p>
               </div>
-              <Button size="sm" asChild>
-                <Link href={`/course/${course.id}/learn`}>
+              <Button size="sm" asChild> 
+                <Link href={`dashboard/courses/${course.id}/`}>
                   <Play className="mr-1 h-3 w-3" />
                   {course.progress === 100 ? "Review" : "Continue"}
                 </Link>

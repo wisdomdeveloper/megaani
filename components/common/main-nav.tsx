@@ -72,11 +72,12 @@ export function MainNav() {
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-4 hidden md:flex">
+    <header className="sticky top-0 z-50 w-[100%] flex justify-center  border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container  h-16 flex items-center justify-center   ">
+        <div className="mr-4 hidden md:flex ">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <BookOpen className="h-6 w-6" />
+
             <span className="hidden font-bold sm:inline-block">Megaani</span>
           </Link>
           <NavigationMenu>

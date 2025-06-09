@@ -68,7 +68,7 @@ export function BookGrid({ category, format, language, minPrice, maxPrice, searc
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 ">
         {[...Array(8)].map((_, i) => (
           <div key={i} className="h-[400px] animate-pulse rounded-lg bg-muted"></div>
         ))}
@@ -88,7 +88,7 @@ export function BookGrid({ category, format, language, minPrice, maxPrice, searc
   }
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
       {books.map((book) => (
         <BookCard key={book.id} book={book} />
       ))}

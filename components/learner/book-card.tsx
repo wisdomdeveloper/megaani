@@ -29,8 +29,8 @@ export function BookCard({ book }: BookCardProps) {
   }
 
   return (
-    <Card className="overflow-hidden transition-all hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/60 dark:hover:border-gray-700">
-      <div className="relative aspect-[3/4] overflow-hidden">
+    <Card className="overflow-hidden flex flex-col justify-between h-full  transition-all hover:shadow-lg dark:border-gray-800 dark:bg-gray-900/60 dark:hover:border-gray-700">
+      <div className="relative aspect-[8/4] overflow-hidden">
         <Image
           src={book.coverImage || "/placeholder.svg"}
           alt={book.title}
@@ -41,7 +41,7 @@ export function BookCard({ book }: BookCardProps) {
           <Badge className="absolute left-2 top-2 bg-amber-500 text-white hover:bg-amber-600">Bestseller</Badge>
         )}
         {book.new && (
-          <Badge className="absolute left-2 top-2 bg-emerald-500 text-white hover:bg-emerald-600">New</Badge>
+          <Badge className="absolute left-2 top-2 bg-purple-500 text-white hover:bg-purple-600">New</Badge>
         )}
       </div>
       <CardContent className="p-4">
@@ -66,18 +66,18 @@ export function BookCard({ book }: BookCardProps) {
           </div>
         </div>
         <Link href={`/book/${book.id}`} className="group">
-          <h3 className="line-clamp-2 font-semibold transition-colors group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
+          <h3 className="line-clamp-2 font-semibold transition-colors group-hover:text-purple-600 dark:group-hover:text-purple-400">
             {book.title}
           </h3>
         </Link>
         <p className="mt-1 text-sm text-muted-foreground">{book.author}</p>
-        <p className="mt-2 text-lg font-bold text-emerald-600 dark:text-emerald-400">{formatPrice(book.price)}</p>
+        <p className="mt-2 text-lg font-bold text-purple-600 dark:text-purple-400">{formatPrice(book.price)}</p>
       </CardContent>
-      <CardFooter className="flex gap-2 p-4 pt-0">
+      <CardFooter className="flex gap-2 !mt-auto  p-4 pt-0 ">
         <Button
           variant="outline"
           size="sm"
-          className="flex-1 border-emerald-200 hover:bg-emerald-50 hover:text-emerald-700 dark:border-emerald-900 dark:hover:bg-emerald-900/30 dark:hover:text-emerald-400"
+          className="flex-1 border-purple-200 hover:bg-emerald-50 hover:text-purple-700 dark:border-purple-900 dark:hover:bg-purple-900/30 dark:hover:text-purple-400"
         >
           <BookOpen className="mr-2 h-4 w-4" />
           Preview
@@ -85,7 +85,7 @@ export function BookCard({ book }: BookCardProps) {
         <Button
           onClick={handleAddToCart}
           size="sm"
-          className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700 dark:bg-emerald-700 dark:hover:bg-emerald-600"
+          className="flex-1 bg-purple-600 text-white hover:bg-purple-700 dark:bg-purple-700 dark:hover:bg-purple-600"
         >
           <ShoppingCart className="mr-2 h-4 w-4" />
           Add to Cart

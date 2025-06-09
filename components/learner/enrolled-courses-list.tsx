@@ -138,7 +138,7 @@ function CourseCard({ course }: { course: any }) {
           </div>
 
           <Button asChild className="w-full">
-            <Link href={`/course/${course.id}/learn`}>
+            <Link href={`/dashboard/courses/${course.id}/`}>
               <Play className="mr-2 h-4 w-4" />
               {course.status === "completed" ? "Review Course" : "Continue Learning"}
             </Link>

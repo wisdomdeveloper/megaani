@@ -31,7 +31,7 @@ export function InstructorBooksList() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold">Your Books</h2>
-        <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+        <Button asChild className="bg-purple-600 hover:bg-purple-700">
           <Link href="/instructor/books/create">Upload New Book</Link>
         </Button>
       </div>
@@ -43,7 +43,7 @@ export function InstructorBooksList() {
           <CardDescription className="mb-6">
             You haven't uploaded any books yet. Start by uploading your first book.
           </CardDescription>
-          <Button asChild className="bg-emerald-600 hover:bg-emerald-700">
+          <Button asChild className="bg-purple-600 hover:bg-purple-700">
             <Link href="/instructor/books/create">Upload Your First Book</Link>
           </Button>
         </Card>

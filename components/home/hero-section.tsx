@@ -5,7 +5,7 @@ import { Play, Star, Users, BookOpen, TrendingUp, Sparkles } from "lucide-react"
 
 export function HeroSection() {
   return (
-    <section className="relative w-full py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20">
+    <section className="relative w-[100%] flex items-center justify-center py-16 md:py-24 lg:py-32 overflow-hidden bg-gradient-to-br from-violet-50 via-purple-50 to-indigo-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-indigo-900/20">
       {/* Animated background elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-violet-400 to-purple-400 dark:from-violet-500 dark:to-purple-500 rounded-full opacity-20 dark:opacity-30 animate-pulse blur-xl" />

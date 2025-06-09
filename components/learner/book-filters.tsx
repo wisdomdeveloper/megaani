@@ -87,7 +87,7 @@ export function BookFilters() {
               <SelectValue placeholder={`Select ${filter.name}`} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All {filter.name}s</SelectItem>
+              <SelectItem value="all">All {filter.name}</SelectItem>
               {filter.options.map((option) => (
                 <SelectItem key={option.value} value={option.value}>
                   {option.label}
@@ -109,7 +109,7 @@ export function BookFilters() {
       </div>
 
       <div className="flex gap-2">
-        <Button onClick={handleApplyFilters} className="flex-1 bg-emerald-600 text-white hover:bg-emerald-700">
+        <Button onClick={handleApplyFilters} className="flex-1 bg-purple-800 text-white hover:bg-purple-600">
           Apply Filters
         </Button>
         <Button onClick={handleResetFilters} variant="outline" className="flex-1">

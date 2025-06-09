@@ -424,7 +424,7 @@ export function BookForm() {
               <span>{uploadProgress}%</span>
             </div>
             <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
-              <div className="h-full bg-emerald-600 transition-all" style={{ width: `${uploadProgress}%` }}></div>
+              <div className="h-full bg-purple-600 transition-all" style={{ width: `${uploadProgress}%` }}></div>
             </div>
           </div>
         )}
@@ -433,7 +433,7 @@ export function BookForm() {
           <Button type="button" variant="outline" onClick={() => router.push("/instructor/books")}>
             Cancel
           </Button>
-          <Button type="submit" disabled={isSubmitting} className="bg-emerald-600 hover:bg-emerald-700">
+          <Button type="submit" disabled={isSubmitting} className="bg-purple-600 hover:bg-purple-700">
             {isSubmitting ? "Uploading..." : "Upload Book"}
           </Button>
         </div>

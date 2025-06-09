@@ -3,9 +3,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import Link from "next/link"
-import { PlusCircle, Eye, Users, DollarSign, Target } from "lucide-react"
+import { PlusCircle, Eye, Users, DollarSign, Target, Sparkles } from "lucide-react"
 
 export function InstructorCourses() {
+  
   // Mock data - replace with real API calls
   const recentCourses = [
     {
@@ -45,12 +46,23 @@ export function InstructorCourses() {
             <CardTitle>My Courses</CardTitle>
             <CardDescription>Manage and track your course performance</CardDescription>
           </div>
-          <Button asChild>
-            <Link href="/instructor/courses/create">
-              <PlusCircle className="mr-2 h-4 w-4" />
-              Create Course
-            </Link>
-          </Button>
+          <div className="flex items-center space-x-2">
+            <Button variant="outline" asChild className="relative overflow-hidden group">
+              <Link href="/instructor/courses/generate">
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+                <Sparkles className="mr-2 h-4 w-4 text-purple-600" />
+                <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent font-medium">
+                  Generate with AI
+                </span>
+              </Link>
+            </Button>
+            <Button asChild>
+              <Link href="/instructor/courses/create">
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Create Course
+              </Link>
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>
@@ -94,7 +106,7 @@ export function InstructorCourses() {
                   </Link>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <Link href={`/instructor/courses/${course.id}/edit`}>Edit</Link>
+                  <Link href={`/instructor/dashboard/${course.id}/edit`}>Edit</Link>
                 </Button>
                 {course.status === "published" && (
                   <Button variant="outline" size="sm" asChild>
