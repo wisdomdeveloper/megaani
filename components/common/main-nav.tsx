@@ -96,7 +96,7 @@ export function MainNav() {
               </NavigationMenuItem>
               {routes.map((route) => (
                 <NavigationMenuItem key={route.href}>
-                  <Link href={route.href} legacyBehavior passHref>
+                  <Link href={route.href} passHref>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>{route.label}</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
