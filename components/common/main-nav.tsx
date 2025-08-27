@@ -1,10 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { CartDropdown } from "@/components/common/cart-dropdown";
+import { CurrencySelector } from "@/components/common/currency-selector";
+import { ModeToggle } from "@/components/theme-toggle";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -13,27 +21,19 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { ModeToggle } from "@/components/theme-toggle"
-import { CartDropdown } from "@/components/common/cart-dropdown"
-import { CurrencySelector } from "@/components/common/currency-selector"
-import { useAuth } from "@/context/auth-context"
-import { BookOpen, Menu } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useAuth } from "@/context/auth-context";
+import { cn } from "@/lib/utils";
+import { BookOpen, Menu } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import * as React from "react";
 
 export function MainNav() {
-  const pathname = usePathname()
-  const { user, logout, isAuthenticated } = useAuth()
-  const [isOpen, setIsOpen] = React.useState(false)
+  const pathname = usePathname();
+  const { user, logout, isAuthenticated } = useAuth();
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const routes = [
     {
@@ -46,13 +46,14 @@ export function MainNav() {
       label: "Browse Books",
       active: pathname === "/browse-books",
     },
-  ]
+  ];
 
   const categories = [
     {
       title: "Development",
       href: "/browse-courses?category=development",
-      description: "Learn web development, mobile apps, and programming languages",
+      description:
+        "Learn web development, mobile apps, and programming languages",
     },
     {
       title: "Business",
@@ -69,7 +70,7 @@ export function MainNav() {
       href: "/browse-courses?category=marketing",
       description: "Grow your audience with digital marketing strategies",
     },
-  ]
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-[100%] flex justify-center  border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -87,7 +88,11 @@ export function MainNav() {
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
                     {categories.map((category) => (
-                      <ListItem key={category.title} title={category.title} href={category.href}>
+                      <ListItem
+                        key={category.title}
+                        title={category.title}
+                        href={category.href}
+                      >
                         {category.description}
                       </ListItem>
                     ))}
@@ -97,7 +102,11 @@ export function MainNav() {
               {routes.map((route) => (
                 <NavigationMenuItem key={route.href}>
                   <Link href={route.href} passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>{route.label}</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={navigationMenuTriggerStyle()}
+                    >
+                      {route.label}
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               ))}
@@ -113,7 +122,11 @@ export function MainNav() {
             </Button>
           </SheetTrigger>
           <SheetContent side="left" className="w-[300px] sm:w-[400px]">
-            <Link href="/" className="flex items-center space-x-2" onClick={() => setIsOpen(false)}>
+            <Link
+              href="/"
+              className="flex items-center space-x-2"
+              onClick={() => setIsOpen(false)}
+            >
               <BookOpen className="h-6 w-6" />
               <span className="font-bold">Megaani</span>
             </Link>
@@ -129,7 +142,9 @@ export function MainNav() {
                 </Link>
               ))}
               <div className="space-y-2">
-                <h4 className="text-sm font-medium text-muted-foreground">Categories</h4>
+                <h4 className="text-sm font-medium text-muted-foreground">
+                  Categories
+                </h4>
                 {categories.map((category) => (
                   <Link
                     key={category.title}
@@ -173,9 +188,15 @@ export function MainNav() {
             {isAuthenticated ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-9 w-9 rounded-full">
+                  <Button
+                    variant="ghost"
+                    className="relative h-9 w-9 rounded-full"
+                  >
                     <Avatar className="h-9 w-9">
-                      <AvatarImage src={user?.avatar || "/placeholder.svg"} alt={user?.name} />
+                      <AvatarImage
+                        src={user?.avatar || "/placeholder.svg"}
+                        alt={user?.name}
+                      />
                       <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
                     </Avatar>
                   </Button>
@@ -183,8 +204,12 @@ export function MainNav() {
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <DropdownMenuLabel>
                     <div className="flex flex-col space-y-1">
-                      <p className="text-sm font-medium leading-none">{user?.name}</p>
-                      <p className="text-xs leading-none text-muted-foreground">{user?.email}</p>
+                      <p className="text-sm font-medium leading-none">
+                        {user?.name}
+                      </p>
+                      <p className="text-xs leading-none text-muted-foreground">
+                        {user?.email}
+                      </p>
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
@@ -197,7 +222,9 @@ export function MainNav() {
                   {user?.role === "instructor" ? (
                     <>
                       <DropdownMenuItem asChild>
-                        <Link href="/instructor/dashboard">Instructor Dashboard</Link>
+                        <Link href="/instructor/dashboard">
+                          Instructor Dashboard
+                        </Link>
                       </DropdownMenuItem>
                       <DropdownMenuItem asChild>
                         <Link href="/instructor/wallet">Wallet</Link>
@@ -229,28 +256,31 @@ export function MainNav() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWithoutRef<"a">>(
-  ({ className, title, children, ...props }, ref) => {
-    return (
-      <li>
-        <NavigationMenuLink asChild>
-          <a
-            ref={ref}
-            className={cn(
-              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-              className,
-            )}
-            {...props}
-          >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
-          </a>
-        </NavigationMenuLink>
-      </li>
-    )
-  },
-)
-ListItem.displayName = "ListItem"
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
